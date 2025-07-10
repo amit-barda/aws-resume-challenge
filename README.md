@@ -243,34 +243,6 @@ aws cloudwatch get-metric-statistics --namespace AWS/DynamoDB
 # CloudFront Status
 aws cloudfront get-distribution --id <distribution-id>
 ```
-
-## 🤝 Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Guidelines
-- Follow Terraform best practices
-- Include proper error handling
-- Add comprehensive documentation
-- Test changes thoroughly
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Support & Contact
-
-For questions and support:
-- Open an Issue on GitHub
-- Contact: [your-email@example.com]
-- AWS Documentation: [AWS Docs](https://docs.aws.amazon.com/)
-
 ## 🎯 Project Goals
 
 This project demonstrates:
