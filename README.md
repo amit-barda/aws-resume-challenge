@@ -84,7 +84,7 @@ s3/
 #### 1. Environment Setup
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/amit-barda/aws-resume-challenge
 cd aws-resume-challenge/s3
 
 # Configure AWS credentials
