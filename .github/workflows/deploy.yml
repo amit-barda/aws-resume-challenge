@@ -1,0 +1,111 @@
+name: Deploy to AWS
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  AWS_REGION: us-east-1
+  TF_VERSION: "1.5.0"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: |
+        cd s3/lambda
+        npm install
+        
+    - name: Build Lambda function
+      run: |
+        cd s3/lambda
+        npm run build
+        
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: ${{ env.TF_VERSION }}
+        
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+        
+    - name: Terraform Init
+      run: |
+        cd s3
+        terraform init
+        
+    - name: Terraform Format Check
+      run: |
+        cd s3
+        terraform fmt -check
+        
+    - name: Terraform Plan
+      run: |
+        cd s3
+        terraform plan -out=tfplan
+      env:
+        TF_VAR_bucket_name: ${{ secrets.BUCKET_NAME }}
+        TF_VAR_domain_name: ${{ secrets.DOMAIN_NAME }}
+        TF_VAR_create_route53_zone: ${{ secrets.CREATE_ROUTE53_ZONE }}
+        
+    - name: Terraform Apply
+      if: github.ref == 'refs/heads/main'
+      run: |
+        cd s3
+        terraform apply -auto-approve tfplan
+      env:
+        TF_VAR_bucket_name: ${{ secrets.BUCKET_NAME }}
+        TF_VAR_domain_name: ${{ secrets.DOMAIN_NAME }}
+        TF_VAR_create_route53_zone: ${{ secrets.CREATE_ROUTE53_ZONE }}
+        
+    - name: Get API Gateway URL
+      if: github.ref == 'refs/heads/main'
+      run: |
+        cd s3
+        API_URL=$(terraform output -raw api_gateway_url)
+        echo "API_GATEWAY_URL=$API_URL" >> $GITHUB_ENV
+        
+    - name: Update HTML with API URL
+      if: github.ref == 'refs/heads/main'
+      run: |
+        cd s3
+        sed -i "s|API_GATEWAY_URL_PLACEHOLDER|${{ env.API_GATEWAY_URL }}|g" index.html
+        
+    - name: Upload to S3
+      if: github.ref == 'refs/heads/main'
+      run: |
+        cd s3
+        aws s3 sync . s3://${{ secrets.BUCKET_NAME }} --exclude "*.tf*" --exclude ".terraform/*" --exclude "lambda/*" --exclude ".github/*"
+        
+    - name: Invalidate CloudFront
+      if: github.ref == 'refs/heads/main'
+      run: |
+        cd s3
+        DISTRIBUTION_ID=$(terraform output -raw cloudfront_distribution_id)
+        aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
+        
+    - name: Output deployment info
+      if: github.ref == 'refs/heads/main'
+      run: |
+        cd s3
+        echo "=== Deployment Complete ==="
+        echo "Website URL: $(terraform output -raw website_url)"
+        echo "CloudFront URL: $(terraform output -raw cloudfront_domain)"
+        echo "API Gateway URL: $(terraform output -raw api_gateway_url)" 

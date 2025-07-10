@@ -1,0 +1,12 @@
+{
+  "name": "visitor-counter-lambda",
+  "version": "1.0.0",
+  "description": "Lambda function for visitor counter",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.1000.0"
+  },
+  "scripts": {
+    "build": "zip -r visitor-counter.zip ."
+  }
+} 

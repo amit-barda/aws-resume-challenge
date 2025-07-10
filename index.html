@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amit Barda - Systems Engineer Portfolio</title>
+    <meta name="description" content="Professional portfolio of Amit Barda, Systems Engineer specializing in cloud infrastructure, automation, and enterprise solutions">
+    <meta name="author" content="Amit Barda">
+    
+    <meta property="og:title" content="Amit Barda - Systems Engineer Portfolio">
+    <meta property="og:description" content="Professional portfolio of Amit Barda, Systems Engineer specializing in cloud infrastructure, automation, and enterprise solutions">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .content {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 2rem;
+        }
+        
+        .section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .skill {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .skill h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .visitor-counter {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .visitor-counter h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .counter {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .loading {
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+        
+        .error {
+            color: #ff6b6b;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 2rem;
+            }
+            
+            .skills {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Amit Barda</h1>
+            <p>Systems Engineer & Cloud Infrastructure Specialist</p>
+        </header>
+        
+        <main class="content">
+            <section class="section">
+                <h2>About Me</h2>
+                <p>I'm a passionate Systems Engineer with expertise in cloud infrastructure, automation, and enterprise solutions. I specialize in designing and implementing scalable, secure, and efficient systems that drive business success.</p>
+            </section>
+            
+            <section class="section">
+                <h2>Skills & Expertise</h2>
+                <div class="skills">
+                    <div class="skill">
+                        <h3>Cloud Infrastructure</h3>
+                        <p>AWS, Azure, GCP, Terraform, CloudFormation</p>
+                    </div>
+                    <div class="skill">
+                        <h3>DevOps & Automation</h3>
+                        <p>CI/CD, Docker, Kubernetes, Jenkins, GitLab</p>
+                    </div>
+                    <div class="skill">
+                        <h3>Infrastructure as Code</h3>
+                        <p>Terraform, Ansible, Puppet, Chef</p>
+                    </div>
+                    <div class="skill">
+                        <h3>Monitoring & Logging</h3>
+                        <p>Prometheus, Grafana, ELK Stack, CloudWatch</p>
+                    </div>
+                    <div class="skill">
+                        <h3>Security</h3>
+                        <p>IAM, Security Groups, WAF, Compliance</p>
+                    </div>
+                    <div class="skill">
+                        <h3>Networking</h3>
+                        <p>VPC, Load Balancers, CDN, DNS</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2>Projects</h2>
+                <p>This website itself is a demonstration of my skills in AWS infrastructure, featuring:</p>
+                <ul style="margin-left: 2rem; color: #666;">
+                    <li>S3 Static Website Hosting</li>
+                    <li>CloudFront CDN for global distribution</li>
+                    <li>Lambda Function for visitor counter</li>
+                    <li>DynamoDB for data storage</li>
+                    <li>API Gateway for serverless API</li>
+                    <li>Infrastructure as Code with Terraform</li>
+                </ul>
+            </section>
+            
+            <div class="visitor-counter">
+                <h3>👥 Visitor Counter</h3>
+                <div id="counter" class="counter loading">Loading...</div>
+                <p>You are visitor number <span id="visitor-number">-</span></p>
+                <div id="error" class="error" style="display: none;"></div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2024 Amit Barda. Built with AWS, Terraform, and ❤️</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Visitor Counter Function
+        async function updateVisitorCount() {
+            try {
+                // This URL will be replaced with the actual API Gateway URL after deployment
+                const apiUrl = 'API_GATEWAY_URL_PLACEHOLDER';
+                
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    document.getElementById('counter').textContent = data.count;
+                    document.getElementById('visitor-number').textContent = data.count;
+                    document.getElementById('counter').className = 'counter';
+                    document.getElementById('error').style.display = 'none';
+                } else {
+                    throw new Error(data.message || 'Failed to fetch visitor count');
+                }
+            } catch (error) {
+                console.error('Error fetching visitor count:', error);
+                document.getElementById('counter').textContent = 'Error';
+                document.getElementById('counter').className = 'counter error';
+                document.getElementById('error').textContent = 'Unable to load visitor count';
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+        
+        // Update visitor count when page loads
+        document.addEventListener('DOMContentLoaded', updateVisitorCount);
+    </script>
+</body>
+</html>
